@@ -40,7 +40,7 @@ Note: The raw voice data is preprocessed, and feature extraction is performed. T
 
 - [Preprocess](Preprocess)
 - [Feature Extraction](Feature_Extraction)
-- [Preliminary Experiments](Preliminary Experiments)
+- [Preliminary_Experiments](Preliminary_Experiments)
 - [SMOTE_Application](SMOTE_Application)
 - [LR_Model_Testing](LR_MODEL_Testing)
 - [Other_Model_Testing](Other_Model_Testing)
@@ -60,9 +60,10 @@ As the STT model before fine-tuning, we used openAI's Whisper-small model. [Whis
 </br >
   
 ### Preprocessed Training Datasets
-Due to AI-Hub's policy, we cannot distribute the original data, so we provide it preprocessed as a log-Mel spectrogram. </br>
+Due to AI-Hub's policy, we cannot distribute the original data </br>
 The original data can be downloaded through the link below.
-[AI-Hub, "Speech recognition data for dysarthria"](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=608)
+[Google_Drive, "e-commerce_dataset"]([https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=608](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true))
+
 </br>
 
 - [Stroke Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Stroke_Dataset)
