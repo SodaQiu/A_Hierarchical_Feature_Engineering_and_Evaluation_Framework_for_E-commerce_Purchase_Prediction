@@ -62,11 +62,11 @@ As the STT model before fine-tuning, we used openAI's Whisper-small model. [Whis
 ### Preprocessed Training Datasets
 Due to AI-Hub's policy, we cannot distribute the original data </br>
 The original data can be downloaded through the link below.
-[Google_Drive, "e-commerce_dataset"]([https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=608](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true))
+[User Behavior Data from Taobao for Recommendation](https://tianchi.aliyun.com/dataset/649?lang=en-us)
 
 </br>
 
-- [Stroke Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Stroke_Dataset)
+- [Google_Drive, "e-commerce_dataset"](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true)
 - [Cerebral Palsy Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Celebral_Palsy_Dataset_Aug)
 - [Peripheral Neuropathy Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Peripheral_Neuropathy_Dataset)
 - [General Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Disease_General_Dataset)
