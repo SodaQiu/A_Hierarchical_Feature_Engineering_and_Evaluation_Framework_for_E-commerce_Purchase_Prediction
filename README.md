@@ -10,16 +10,21 @@ You can run the research results through the following steps. <br />
 
 ## Research Content
 
-Individuals with dysarthria exhibit irregular speech patterns depending on the characteristics of their disease, significantly reducing the accuracy of conventional speech recognition systems. Most prior studies have compared only a single disease group or used aggregated data without distinguishing between diseases, failing to adequately analyze disease-specific differences. This study extracted fluency metrics from a Korean dysarthric speech corpus across three disease groups—stroke, cerebral palsy, and peripheral neuropathy—and classified the diseases based on these features. Then, the performance of customized speech recognition models for each disease was evaluated using Weighted Character Error Rate (Weighted-CER). The results showed that the classification accuracy based on fluency metrics reached 99%, and the disease-specific models improved Weighted-CER by up to 18.34 and 1.05 percentage points compared to the Whisper-Small model and a model trained on the entire dataset, respectively. In terms of Weighted-CER, the error rate decreased by up to 15.27 and 1.49 percentage points, respectively. These findings indicate that disease-specific models can meaningfully enhance speech recognition performance for dysarthric speech and highlight the necessity of developing speaker-customized speech recognition systems.
+With the rapid growth of e-commerce, accurately predicting user purchasing behavior has become essential for enhancing platform competitiveness. However, existing studies often lack a generalizable feature engineering framework that systematically transforms raw behavior logs into high-value predictive signals. To address this gap, this study proposes and validates a three-layer feature engineering framework using real-world data from Alibaba. The framework organizes features into Basic (Basic Features), Conversion (Conversion Rate and Behavior Stability), and Advanced layers (Overall Activity and advanced Interactions). To systematically quantify model performance, this study devised a hierarchical evaluation method that quantifies marginal feature contribution layer by layer. Experimental results demonstrate that this framework improves the F1 score from 0.61 to 0.68, and up to 0.96 in controlled experiments, although this may reflect dataset-specific factors and should be further validated on larger-scale data. Overall, the findings demonstrate the effectiveness of hierarchical feature design and provide a systematic and interpretable approach for user behavior modeling in e-commerce.
 
 ---
 
-## Comparison of utterance samples
+## Flowchart of Research Processes
 
-| ![image](https://github.com/user-attachments/assets/e6a47b9a-9610-4b42-ab61-f8d7b2b9ce5a) | ![image](https://github.com/user-attachments/assets/47925d2c-3370-4948-b897-6ec08740ee47) |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![image](https://github.com/user-attachments/assets/e6a47b9a-9610-4b42-ab61-f8d7b2b9ce5a) |
 
-<p align='center'>Fig 1, 2. Disease-specific speech Visualization of waveform+VAD and spectrograms</p>
+<p align='center'>Fig 1. Flowchart of building a user purchase behavior prediction model</p>
+
+
+![image](https://github.com/user-attachments/assets/47925d2c-3370-4948-b897-6ec08740ee47) |
+
+
+<p align='center'>Fig 2. Feature hierarchy conceptual diagram illustrates the conceptual flow among feature layers</p>
 
 ---
 
@@ -48,19 +53,8 @@ Note: The raw voice data is preprocessed, and feature extraction is performed. T
 
 </br >
 
-#### Fine-Tuned Model
-
-As the STT model before fine-tuning, we used openAI's Whisper-small model. [Whisper](https://github.com/openai/whisper) </br >
-
-- [Stroke](https://huggingface.co/yoona-J/ASR_Whisper_Stroke)
-- [Cerebral Palsy](https://huggingface.co/yoona-J/ASR_Whisper_Celebral_Palsy_Aug)
-- [Peripheral Neuropathy](https://huggingface.co/yoona-J/ASR_Whisper_Peripheral_Neuropathy)
-- [General](https://huggingface.co/yoona-J/ASR_Whisper_Disease_General)
-
-</br >
   
 ### Preprocessed Training Datasets
-Due to AI-Hub's policy, we cannot distribute the original data </br>
 The original data can be downloaded through the link below.
 [User Behavior Data from Taobao for Recommendation](https://tianchi.aliyun.com/dataset/649?lang=en-us)
 
@@ -104,8 +98,7 @@ We provide feature extraction figures as a file, which also includes speaker inf
 
 If you have any questions regarding the research, please contact us at the email below. </br>
 
-<a href=mailto:chungyn@hanyang.ac.kr> <img src="https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=Gmail&logoColor=white&link=mailto:chungyn@hanyang.ac.kr"> </a>
 
-chungyn@hanyang.ac.kr </br>
+soda0808@hanyang.ac.kr </br>
 
 ---
