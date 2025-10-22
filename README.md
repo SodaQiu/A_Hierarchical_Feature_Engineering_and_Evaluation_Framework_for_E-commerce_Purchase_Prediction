@@ -85,7 +85,7 @@ We provide feature extraction figures as a file, which also includes speaker inf
 ### Frameworks and Libraries Used
 
 - Local Environment (python 3.10.1, pandas 2.2.3, numpy 1.26.4, openpyxl 3.1.5, noisereduce 3.0.3, praat-parselmouth 0.4.5, librosa 0.11.0)
-- Google Colab Environment (python 3.11.13, transformers 4.54.0, torch 2.6.0+cu124, numpy 2.0.2, datasets 3.6.0, evaluate 0.4.4, librosa 0.11.0, nlptutti 0.0.0.10, jiwer 4.0.0)
+- 
 
 </br >
 
