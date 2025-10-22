@@ -41,9 +41,9 @@ Note: The raw voice data is preprocessed, and feature extraction is performed. T
 - [Preprocess](Preprocess)
 - [Feature Extraction](Feature_Extraction)
 - [Preliminary_Experiments](directory)
-- [SMOTE_Application](SMOTE_Application)
-- [LR_Model_Testing](LR_MODEL_Testing)
-- [Other_Model_Testing](Other_Model_Testing)
+- [SMOTE_test](SMOTE_test)
+- [LR_Model_train](LR_MODEL_train)
+- [Other_Models](Other_Models)
 
 
 </br >
