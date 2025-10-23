@@ -70,38 +70,52 @@ The original data can be downloaded through the link below.
 
 </br>
 
-- [Final_dataset, "e-commerce_dataset"](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true)
-- [cleaned_dataset](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/cleaned_dataset.xlsx)
-- [dataset_for_prediction](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/dataset_for_prediction.xlsx)
-- [user_time_with_user_stats](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/user_time_with_user_stats.xlsx)
+- [Final_dataset](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true)
+- [Cleaned_dataset](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/cleaned_dataset.xlsx)
+- [Dataset_for_prediction](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/dataset_for_prediction.xlsx)
+- [User_time_with_user_stats](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/user_time_with_user_stats.xlsx)
 
 </br >
 
-### Utterance Testset
+### Methodology
 
-#### Predict Utterance Dataset
+This framework consists of three hierarchical feature layers:
 
-- [Text_Preprocess](https://drive.google.com/drive/folders/1nj2i7ATyR_r-g64zfu_cPJrdQniVXv36?usp=drive_link)
-- [Audio_Preprocess](https://drive.google.com/drive/folders/1gtUJdO5jkNTziiJcdAayRF_uyqLbpMqF?usp=drive_link)
+- **Base Layer**: Captures raw user activity metrics (e.g., pv_count, cart_count, fav_count).
 
-#### Fluency Analysis Values
+- **Conversion Layer**: Focuses on conversion rate metrics and stability (e.g., cart_stability, fav_to_pv_count_rate).
 
-We provide feature extraction figures as a file, which also includes speaker information (age, sex, disease). </br>
+- **Advanced Layer**: Represents overall activity and high-level interaction features (e.g., pv_cart_interaction, ..._ratio).
 
-- [fluency_analysis](Feature_Extraction/Result/fluency_analysis.csv)
+- [Smote_Comparison](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/ab12ddcef9e5b6dcf92ef76fe798a7270d5da96f/SMOTE_test/smote_visualization.py)
+
+Note: To address class imbalance and ensure robust evaluation, the Synthetic Minority Oversampling Technique (SMOTE) and stratified 5-fold cross-validation are applied during training.
+
+
+
+</br>
+
+### Results and Discussion
+
+- The hierarchical feature framework improved model performance across of XGB and CatBoots.  
+- Logistic Regression F1-score improved from **0.6126 → 0.9624**, validating the effectiveness of the proposed features.  
+- CatBoost achieved the best performance with **F1 = 0.9826**, demonstrating strong capability in capturing non-linear interactions.  
+- The results confirm the robustness and scalability of the hierarchical feature engineering design. </br>
+
+- [CatBoost_code](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/ab12ddcef9e5b6dcf92ef76fe798a7270d5da96f/Other_Models/Catboost_1.py)
 
 </br >
 
 ### Frameworks and Libraries Used
 
-- Local Environment (python 3.12.4, pandas 2.2.2, numpy 1.26.4, matplotlib 3.8.4, seaborn 0.13.2, scikit-lear 1.4.2, imblearn 0.12.3)
-- Model (XGB 3.0.5, Catboost 1.2.8, DT 1.4.2, RF 1.4.2)
+- Local Environment: (python 3.12.4, pandas 2.2.2, numpy 1.26.4, matplotlib 3.8.4, seaborn 0.13.2, scikit-lear 1.4.2, imblearn 0.12.3)
+- Models: (XGB 3.0.5, Catboost 1.2.8, DT 1.4.2, RF 1.4.2)
 
 </br >
 
 ### Training and Experimental Setup
 
-- Local (AMD Radeon 680M GPU,AMD Ryzen ™7-6800H @32GHz(8cores/16threads)CPU,16GB Ram)
+- Local: AMD Radeon 680M GPU,AMD Ryzen ™7-6800H @32GHz(8cores/16threads) CPU,16GB Ram
 
 ---
 
