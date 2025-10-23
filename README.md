@@ -84,15 +84,14 @@ We provide feature extraction figures as a file, which also includes speaker inf
 
 ### Frameworks and Libraries Used
 
-- Local Environment (python 3.10.1, pandas 2.2.3, numpy 1.26.4, openpyxl 3.1.5, noisereduce 3.0.3, praat-parselmouth 0.4.5, librosa 0.11.0)
-- 
+- Local Environment (python 3.12.4, pandas 2.2.2, numpy 1.26.4, matplotlib 3.8.4, seaborn 0.13.2, scikit-lear 1.4.2, imblearn 0.12.3)
+- Model (XGB 3.0.5, Catboost 1.2.8, DT 1.4.2, RF 1.4.2)
 
 </br >
 
 ### Training and Experimental Setup
 
-- Local (NVIDIA GeForce MX150 & Intel® UHD Graphics 620 GPU, Intel Core i7-8565U @ 1.80GHz (4 cores / 8 threads) CPU, 16GB Ram)
-- Google Colab (NVIDIA Tesla T4 GPU, 15GB VRAM, CUDA 12.4, Driver 550.54.15)
+- LocaI (AMD Radeon 680M GPU,AMD Ryzen ™7-6800H @32GHz(8cores/16threads)CPU,16GB Ram)
 
 ---
 
