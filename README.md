@@ -57,7 +57,7 @@ Note: The raw user behavior logs are preprocessed, and feature engineering is pe
 - [Feature Extraction](Feature_Extraction)
 - [Preliminary_Experiments](directory)
 - [SMOTE_test](SMOTE_test)
-- [LR_Model_train](LR_MODEL_train)
+- [LR_Model_train](LR_Model_train)
 - [Other_Models](Other_Models)
 
 
