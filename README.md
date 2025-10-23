@@ -16,7 +16,7 @@ With the rapid growth of e-commerce, accurately predicting user purchasing behav
 
 ## Flowchart of Research Processes
 
-| ![image](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Feature%20Extraction/Flowchart%20of%20building%20a%20user%20purchase%20behavior%20prediction%20model.jpg)
+| ![image](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/43cf864e362e220935049afe2590ff6258970612/Feature%20Extraction/Flowchart%20of%20building%20a%20user%20purchase%20behavior%20prediction%20model.png)
 
 <p align='center'>Fig 1. Flowchart of building a user purchase behavior prediction model</p>
 
