@@ -16,24 +16,34 @@ With the rapid growth of e-commerce, accurately predicting user purchasing behav
 
 ## Flowchart of Research Processes
 
-| ![image](https://github.com/user-attachments/assets/e6a47b9a-9610-4b42-ab61-f8d7b2b9ce5a) |
+| ![image](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Feature%20Extraction/Flowchart%20of%20building%20a%20user%20purchase%20behavior%20prediction%20model.jpg)
 
 <p align='center'>Fig 1. Flowchart of building a user purchase behavior prediction model</p>
 
 
-![image](https://github.com/user-attachments/assets/47925d2c-3370-4948-b897-6ec08740ee47) |
+| ![image](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Feature%20Extraction/Feature%20hierarchy%20conceptual%20diagram%20illustrates%20the%20conceptual%20flow%20among%20feature%20layers.png)
 
 
 <p align='center'>Fig 2. Feature hierarchy conceptual diagram illustrates the conceptual flow among feature layers</p>
 
 ---
 
-## Reproducibility
+## Comparison of Research Model Results
 
-<img width="2300" height="1080" alt="ASR_Figure4" src="https://github.com/user-attachments/assets/f7ee6291-e478-4fa2-a202-2ad1f95a8ca3" />
-<p align='center'>Fig 3. Overview of our approach</p>
+<p align="center">
+  <img src="https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Feature%20Extraction/lr_feature_importance.png?raw=true" width="900"/>
+  <br>
+  <em>Fig 3. Top 20 Important Features (Logistic Regression with RFE-based)</em>
+</p>
 
-Note: The raw voice data is preprocessed, and feature extraction is performed. The extracted features are used to classify diseases. If there is misclassified voice data, the data is passed to the General Model that is trained to extract the text.
+<p align="center">
+  <img src="https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Other_Models/catboost_feature_importance.png?raw=true" width="900" alt="Fig 4. Top 20 Important Features (CatBoost on RFE-based Features)" />
+  <br>
+  <em>Fig 4. Top 20 Important Features (CatBoost on RFE-based Features)</em>
+</p>
+
+
+Note: The raw user behavior logs are preprocessed, and feature engineering is performed to construct multi-layer features. The extracted features are then used to predict user purchase behavior.
 
 </br>
 
@@ -60,10 +70,10 @@ The original data can be downloaded through the link below.
 
 </br>
 
-- [Google_Drive, "e-commerce_dataset"](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true)
-- [Cerebral Palsy Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Celebral_Palsy_Dataset_Aug)
-- [Peripheral Neuropathy Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Peripheral_Neuropathy_Dataset)
-- [General Dataset](https://huggingface.co/datasets/yoona-J/ASR_Preprocess_Disease_General_Dataset)
+- [Final_dataset, "e-commerce_dataset"](https://docs.google.com/spreadsheets/d/1klqayHnwfpLxYwPlv5sq67ybDQWFGjpd/edit?usp=drive_link&ouid=109035804013317356516&rtpof=true&sd=true)
+- [cleaned_dataset](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/cleaned_dataset.xlsx)
+- [dataset_for_prediction](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/dataset_for_prediction.xlsx)
+- [user_time_with_user_stats](https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Preprocess/user_time_with_user_stats.xlsx)
 
 </br >
 
@@ -91,7 +101,7 @@ We provide feature extraction figures as a file, which also includes speaker inf
 
 ### Training and Experimental Setup
 
-- LocaI (AMD Radeon 680M GPU,AMD Ryzen ™7-6800H @32GHz(8cores/16threads)CPU,16GB Ram)
+- Local (AMD Radeon 680M GPU,AMD Ryzen ™7-6800H @32GHz(8cores/16threads)CPU,16GB Ram)
 
 ---
 
