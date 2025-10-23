@@ -104,6 +104,12 @@ Note: To address class imbalance and ensure robust evaluation, the Synthetic Min
 
 </br >
 
+### Reproducibility Steps
+
+If you don't want to start with data preprocessing, download the following dataset.
+- 
+
+
 ### Frameworks and Libraries Used
 
 - Local Environment: (python 3.12.4, pandas 2.2.2, numpy 1.26.4, matplotlib 3.8.4, seaborn 0.13.2, scikit-lear 1.4.2, imblearn 0.12.3)
