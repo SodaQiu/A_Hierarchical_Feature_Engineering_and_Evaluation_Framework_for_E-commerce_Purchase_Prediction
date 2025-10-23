@@ -22,10 +22,8 @@ With the rapid growth of e-commerce, accurately predicting user purchasing behav
 
 
 <p align="center">
-  <img src="https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Feature%20Extraction/Feature%20hierarchy%20conceptual%20diagram%20illustrates%20the%20conceptual%20flow%20among%20feature%20layers.png" 
-       alt="Feature hierarchy diagram" width="60%">
+  <img src="https://github.com/SodaQiu/A_Hierarchical_Feature_Engineering_and_Evaluation_Framework_for_E-commerce_Purchase_Prediction/blob/38b4ae554083bef643497ff713561d0057a99fce/Feature%20Extraction/Feature%20hierarchy%20conceptual%20diagram%20illustrates%20the%20conceptual%20flow%20among%20feature%20layers.png"      alt="Feature hierarchy diagram" width="60%">
 </p>
-
 <p align="center"><b>Fig 2.</b> Feature hierarchy conceptual diagram illustrates the conceptual flow among feature layers.</p>
 
 ---
