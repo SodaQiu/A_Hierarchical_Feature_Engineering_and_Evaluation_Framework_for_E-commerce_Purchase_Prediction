@@ -51,11 +51,11 @@ if 'user_id' not in df.columns:
 
 df = df.groupby('user_id', as_index=False).agg(agg_dict)
 
-# 4) buy_yn 补全（如果原表没有 but 你仍需要）
+# 4) buy_yn 补全
 if 'buy_yn' not in df.columns and 'buy' in df.columns:
     df['buy_yn'] = (df['buy'] > 0).astype(int)
 
-# 5) 调整列顺序，尽量与截图一致（存在才保留）
+# 5) 调整列顺序
 cols_order = [
     'user_id',
     'cart', 'fav', 'buy',
@@ -79,5 +79,6 @@ if 'buy' in df.columns:
     print("success")
 else:
     print("error")
+
 
 
