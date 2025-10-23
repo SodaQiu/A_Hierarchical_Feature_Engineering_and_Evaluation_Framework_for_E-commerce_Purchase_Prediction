@@ -1,117 +1,83 @@
 import pandas as pd
 
-# 读取 Excel 文件
-file_path = r"C:\Users\47556\Desktop\user_time_with_user_stats.xlsx"
-df = pd.read_excel(file_path)
+# 输入/输出路径
+in_path  = r"C:\Users\47556\Desktop\user_time_with_user_stats.xlsx"
+out_path = r"C:\Users\47556\Desktop\no_day1.xlsx"
 
-print(f"原始数据形状: {df.shape}")
-print(f"原始列名: {list(df.columns)}")
+# 读取
+df = pd.read_excel(in_path)
+print("原始列：", list(df.columns))
 
-# 1. 删除 day 列（如果存在）
-if 'day_type' in df.columns:
-    df = df.drop(columns=['day_type'])
-    print("已删除 day_type 列")
+# 1) 删除无关列
+drop_cols = [c for c in ['suspected_spider', 'day_type', 'time_period'] if c in df.columns]
+if drop_cols:
+    df = df.drop(columns=drop_cols)
+    print("已删除：", drop_cols)
+
+# 2) 统一列名：把 *_count 改成最终需要的列名
+rename_map = {}
+if 'cart_count' in df.columns: rename_map['cart_count'] = 'cart'
+if 'fav_count'  in df.columns: rename_map['fav_count']  = 'fav'
+if 'buy_count'  in df.columns: rename_map['buy_count']  = 'buy'
+# 注意：pv_count 按你的截图保留这个名字，不改
+df = df.rename(columns=rename_map)
+
+# 3) 按用户聚合（若每个 user_id 多行）
+agg_dict = {}
+
+# —— 计数列：求和 ——（存在则聚合）
+for c in ['pv_count', 'cart', 'fav', 'buy']:
+    if c in df.columns:
+        agg_dict[c] = 'sum'
+
+# —— 分类标签：buy_yn（若存在），聚合为：只要有一次购买就置1 ——
+if 'buy_yn' in df.columns:
+    agg_dict['buy_yn'] = 'max'
+
+# —— 统计列：*_min 取最小、*_max 取最大、*_avg 取平均 ——
+for prefix in ['pv', 'cart', 'fav', 'buy']:
+    c_min, c_max, c_avg = f'{prefix}_min', f'{prefix}_max', f'{prefix}_avg'
+    if c_min in df.columns: agg_dict[c_min] = 'min'
+    if c_max in df.columns: agg_dict[c_max] = 'max'
+    if c_avg in df.columns: agg_dict[c_avg] = 'mean'
+
+# 如果没有需要聚合的列，也至少保留 user_id
+if not agg_dict:
+    agg_dict = {col: 'first' for col in df.columns if col != 'user_id'}
+
+# 实施聚合
+if 'user_id' not in df.columns:
+    raise ValueError("缺少 user_id 列，无法合并")
+
+df = df.groupby('user_id', as_index=False).agg(agg_dict)
+
+# 4) buy_yn 补全（如果原表没有 but 你仍需要）
+if 'buy_yn' not in df.columns and 'buy' in df.columns:
+    df['buy_yn'] = (df['buy'] > 0).astype(int)
+
+# 5) 调整列顺序，尽量与截图一致（存在才保留）
+cols_order = [
+    'user_id',
+    'cart', 'fav', 'buy',
+    'buy_yn',
+    'pv_min', 'pv_max', 'pv_avg',
+    'cart_min', 'cart_max', 'cart_avg',
+    'fav_min', 'fav_max', 'fav_avg',
+    'buy_min', 'buy_max', 'buy_avg',
+    'pv_count'
+]
+df = df[[c for c in cols_order if c in df.columns]]
+
+# 6) 保存
+df.to_excel(out_path, index=False)
+print(f"处理完成，已保存到：{out_path}")
+print("最终列：", list(df.columns))
+
+# 7)（可选）检查 buy_target 兼容性
+if 'buy' in df.columns:
+    df['buy_target'] = (df['buy'] > 0).astype(int)
+    print("success")
 else:
-    print("未找到 day_type 列")
+    print("error")
 
-# 2. 处理时间列：将时间转换为整型
-if 'time_period' in df.columns:
-    print(f"\ntime_period列数据类型: {df['time_period'].dtype}")
-    print(f"time_period列唯一值: {df['time_period'].unique()}")
-
-    # 时间映射规则
-    time_mapping = {
-
-        'Morning': 1, 'Afternoon': 2, 'Evening': 3,'Late Night': 4,
-        '1': 1, '2': 2, '3': 3,'4': 4,
-        1: 1, 2: 2, 3: 3,4: 4
-    }
-
-    if df['time_period'].dtype == 'object':
-        # 清理数据并转换
-        df['time_period'] = df['time_period'].astype(str).str.strip()
-        df['time_period'] = df['time_period'].map(time_mapping)
-
-        # 检查未映射的值
-        unmapped_mask = df['time_period'].isna()
-        if unmapped_mask.any():
-            print(f"警告：发现 {unmapped_mask.sum()} 个无法映射的时间值")
-            df['time_period'] = df['time_period'].fillna(2)  # 默认为中午
-
-    # 确保time_period列为整型
-    df['time_period'] = df['time_period'].astype(int)
-    print(f"时间列已转换为整型，唯一值: {sorted(df['time_period'].unique())}")
-else:
-    print("未找到 time_period 列")
-
-# 3. 按 user_id 合并不同 time_period 的数据
-if 'user_id' in df.columns:
-    print(f"\n开始按 user_id 合并数据...")
-
-    # 定义聚合函数
-    agg_functions = {}
-
-    # 指定需要取第一行数据的列（统计特征列）
-    first_cols = ['pv_min', 'pv_max', 'pv_avg', 'cart_min', 'cart_max', 'cart_avg',
-                  'fav_min', 'fav_max', 'fav_avg', 'buy_min', 'buy_max', 'buy_avg']
-
-    # 指定需要求和的列（原始行为数据）
-    sum_cols = ['pv', 'cart', 'fav', 'buy']
-
-    # 找出所有pv相关列（用于求和）
-    pv_cols = [col for col in df.columns if 'pv' in col.lower() and col not in first_cols]
-
-    for col in df.columns:
-        if col != 'user_id':
-            if col in first_cols:
-                agg_functions[col] = 'first'  # 统计特征列取第一个值
-            elif col in sum_cols:
-                agg_functions[col] = 'sum'  # 原始行为数据求和
-            elif 'pv' in col.lower():
-                agg_functions[col] = 'sum'  # 其他pv相关列求和
-            else:
-                agg_functions[col] = 'first'  # 其他列取第一个值
-
-    # 按 user_id 聚合
-    user_aggregated = df.groupby('user_id').agg(agg_functions).reset_index()
-
-    # 将需要求和的pv相关列合并为一个pv_count列
-    if pv_cols:
-        user_aggregated['pv_count'] = user_aggregated[pv_cols].sum(axis=1)
-        # 删除原来的pv列
-        user_aggregated = user_aggregated.drop(columns=pv_cols)
-
-    # 删除time_period列，因为已经按user_id合并了不同时间段的数据
-    if 'time_period' in user_aggregated.columns:
-        user_aggregated = user_aggregated.drop(columns=['time_period'])
-        print("已删除time_period列（数据已按user_id合并）")
-
-    print(f"聚合前数据行数: {len(df)}")
-    print(f"聚合后数据行数: {len(user_aggregated)}")
-    print(f"求和的pv相关列: {pv_cols}")
-    print(f"求和的原始行为列: {[col for col in sum_cols if col in df.columns]}")
-    print(f"取第一行数据的统计特征列: {[col for col in first_cols if col in df.columns]}")
-
-    # 使用聚合后的数据
-    df = user_aggregated
-
-    print(f"\n合并后数据形状: {df.shape}")
-    print(f"合并后列名: {list(df.columns)}")
-
-else:
-    print(f"警告: 数据中缺少 user_id 列，无法进行合并")
-    print(f"数据列名: {list(df.columns)}")
-
-# 生成新的 Excel 文件
-# output_path = r"E:\google\Lab\alibaba\no_day2.xlsx"
-output_path = r'C:\Users\47556\Desktop\no_day1.xlsx'
-df.to_excel(output_path, index=False)
-
-print(f"\n处理完成，结果已保存到: {output_path}")
-print(f"最终数据形状: {df.shape}")
-print(f"最终列名: {list(df.columns)}")
-if 'user_id' in df.columns and 'time_period' in df.columns:
-    print(f"用户数量: {df['user_id'].nunique()}")
-    print(f"时间段分布: {df['time_period'].value_counts().sort_index().to_dict()}")
-    print(f"用户-时间组合数: {len(df)}")
 
