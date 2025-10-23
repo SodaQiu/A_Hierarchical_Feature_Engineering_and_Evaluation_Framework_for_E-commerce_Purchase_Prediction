@@ -1,24 +1,7 @@
 import pandas as pd
 import os
 
-# 1. 读取数据
 df = pd.read_excel(r"C:\Users\47556\Desktop\dataset_for_prediction.xlsx")
-#
-# # 2. 缺失值统计
-# missing_counts = df.isnull().sum()
-# missing_ratio = missing_counts / len(df) * 100  # 百分比
-#
-# # 3. 汇总结果
-# missing_summary = pd.DataFrame({
-#     "Missing Count": missing_counts,
-#     "Missing Ratio (%)": missing_ratio
-# }).sort_values(by="Missing Ratio (%)", ascending=False)
-#
-# print(missing_summary)
-
-# 假设 df 是行为日志数据
-# df 包含字段: user_id, behavior_type
-# 其中 behavior_type ∈ {"pv", "buy", "cart", "fav"}
 
 # 1. 聚合用户行为
 pv_threshold = df["pv_count"].quantile(0.99)    # 浏览99分位
@@ -65,5 +48,6 @@ df_clean.to_excel(output_excel, index=False)
 # 保存 CSV (可选)
 output_csv = os.path.join(desktop, "cleaned_dataset.csv")
 df_clean.to_csv(output_csv, index=False, encoding="utf-8-sig")
+
 
 print(f"\n清洗后的数据集已保存到：\n{output_excel}\n{output_csv}")
