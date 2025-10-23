@@ -49,9 +49,7 @@ Note: The raw user behavior logs are preprocessed, and feature engineering is pe
 
 ---
 
-### Research Code and Model Repository
-
-#### Research code
+### Research Code 
 
 - [Preprocess](Preprocess)
 - [Feature Extraction](Feature_Extraction)
